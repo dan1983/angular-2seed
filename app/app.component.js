@@ -1,4 +1,4 @@
-System.register(['angular2/core', './courses.component', './authors.component', './favorite.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './courses.component', './authors.component', './favorite.component', './lovecounter.component', './counter.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './courses.component', './authors.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, courses_component_1, authors_component_1, favorite_component_1;
+    var core_1, courses_component_1, authors_component_1, favorite_component_1, lovecounter_component_1, counter_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,23 +25,36 @@ System.register(['angular2/core', './courses.component', './authors.component', 
             },
             function (favorite_component_1_1) {
                 favorite_component_1 = favorite_component_1_1;
+            },
+            function (lovecounter_component_1_1) {
+                lovecounter_component_1 = lovecounter_component_1_1;
+            },
+            function (counter_component_1_1) {
+                counter_component_1 = counter_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.post = {
                         title: "Title",
-                        isFavorite: false
+                        isFavorite: false,
+                        isLiked: false,
+                        counter: 14,
+                        myVote: 0,
+                        voteCount: 118
                     };
                 }
                 AppComponent.prototype.onFavoriteChange = function ($event) {
                     console.log($event);
                 };
+                AppComponent.prototype.onCounterChange = function ($event) {
+                    console.log($event);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<h1>My First Angular 2 App</h1>\n    <courses></courses>\n    <authors></authors>\n   <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>",
-                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favorite_component_1.FavoriteComponet]
+                        template: "<h1>My First Angular 2 App</h1>\n    <courses></courses>\n    <authors></authors>\n   <favorite [isFavorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n   <lovecounter [counter]=\"post.counter\" [isLiked]=\"post.isLiked\"></lovecounter><br>\n   <counter [voteCount]=\"post.voteCount\" [myVote]=\"post.myVote\" (vote)=\"onCounterChange($event)\"></counter>\n   ",
+                        directives: [courses_component_1.CoursesComponent, authors_component_1.AuthorsComponent, favorite_component_1.FavoriteComponet, lovecounter_component_1.LoveCounterComponent, counter_component_1.CounterComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

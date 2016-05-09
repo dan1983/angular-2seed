@@ -11,44 +11,42 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var FavoriteComponet;
+    var LoveCounterComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FavoriteComponet = (function () {
-                function FavoriteComponet() {
-                    this.isFavorite = false;
-                    this.change = new core_1.EventEmitter();
+            LoveCounterComponent = (function () {
+                function LoveCounterComponent() {
+                    this.counter = 0;
+                    this.isLiked = false;
                 }
-                FavoriteComponet.prototype.onClick = function () {
-                    this.isFavorite = !this.isFavorite;
-                    this.change.emit({ newValue: this.isFavorite });
+                LoveCounterComponent.prototype.onClick = function () {
+                    this.isLiked = !this.isLiked;
+                    this.counter += this.isLiked ? 1 : -1;
                 };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], FavoriteComponet.prototype, "isFavorite", void 0);
+                ], LoveCounterComponent.prototype, "counter", void 0);
                 __decorate([
-                    core_1.Output(), 
+                    core_1.Input(), 
                     __metadata('design:type', Object)
-                ], FavoriteComponet.prototype, "change", void 0);
-                FavoriteComponet = __decorate([
+                ], LoveCounterComponent.prototype, "isLiked", void 0);
+                LoveCounterComponent = __decorate([
                     core_1.Component({
-                        selector: 'favorite',
-                        templateUrl: 'app/favorite.template.html',
-                        styles: [
-                            "\n\t\t.glyphicon-star {\n\t\t\tcolor: orange !important;\n\t\t\t}\n\t\t.glyphicon-star-empty {\n\t\t\tcolor: blue !important;\n\t\t}\t"
-                        ]
+                        selector: 'lovecounter',
+                        template: "<i\n  \t\tclass=\"glyphicon glyphicon-heart\"\n  \t\t[class.highlighted]=\"!isLiked\"\n  \t  (click) = \"onClick()\">\n  </i>\n  <span>{{counter}}</span>",
+                        styles: ["\n      .glyphicon-heart {\n        color:#ccc;\n        cursor:pointer;\n        }\n        .highlighted {\n          color:deepink;\n        }\n      "]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], FavoriteComponet);
-                return FavoriteComponet;
+                ], LoveCounterComponent);
+                return LoveCounterComponent;
             }());
-            exports_1("FavoriteComponet", FavoriteComponet);
+            exports_1("LoveCounterComponent", LoveCounterComponent);
         }
     }
 });
-//# sourceMappingURL=favorite.component.js.map
+//# sourceMappingURL=lovecounter.component.js.map
